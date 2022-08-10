@@ -68,8 +68,33 @@ private final NumberService numberService;
 		
 		//SE CREA LA ENTIDAD EN LA BASE DE DATOS
 		this.numberService.create(number);
-		
-		
+	
+	    try
+	        {   
+	        
+	         // Si el archivo no existe, se crea!
+	        if (!archivo.exists()) {
+	            archivo.createNewFile();
+	        }
+	       
+	        fw = new FileWriter(archivo.getAbsoluteFile(), true);
+	        bw = new BufferedWriter(fw);
+	        bw.write(valores);
+	        
+	        } 
+	        catch (IOException e) {
+	            e.printStackTrace();
+	        } finally {
+	            try {
+	                       
+	                if (bw != null)
+	                    bw.close();
+	                if (fw != null)
+	                    fw.close();
+	            } catch (IOException ex) {
+	                ex.printStackTrace();
+	            }
+	        }
 		
 		return "EL FIBONACCI DE"+" "+valorDTO.getNumber()+" "+"ES:"+" "+num;
 	}
