@@ -1,0 +1,19 @@
+spring: 
+  application:
+    name: Fibonacci
+  datasource: 
+    url: jdbc:mysql://localhost/fibonacci?
+    username: root
+    password: 
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    generate-ddl: true
+    show-sql: true
+    mvc:
+      pathmatch:
+            matching-strategy: ant_path_matcher
+server:
+  port: 9090
+    
